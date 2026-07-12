@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://w743lyxa1g0d"]
+
+[ext_resource type="Script" uid="uid://vsuof3xhn4tb" path="res://scenes/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://hsl1ltouqg7s" path="res://scenes/buckets.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bet5i5ghee6vk" path="res://scenes/ball.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://bhqlw351407ar" path="res://scenes/balls_remaining_label.gd" id="4_iywne"]
+[ext_resource type="Script" uid="uid://beqh8rqq7ujng" path="res://scenes/score_label.gd" id="4_lbhrr"]
+
+[sub_resource type="Animation" id="Animation_iywne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("buckets/cool_bucket/BucketCol:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("buckets/cool_bucket/BucketMeshes:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("buckets/InsideTheBucketsArea3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("buckets/InsideTheBucketsArea2X3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p57ef"]
+resource_name = "spin_the_buckets"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("buckets/cool_bucket/BucketCol:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("buckets/cool_bucket/BucketMeshes:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("buckets/InsideTheBucketsArea3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("buckets/InsideTheBucketsArea2X3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbhrr"]
+_data = {
+&"RESET": SubResource("Animation_iywne"),
+&"spin_the_buckets": SubResource("Animation_p57ef")
+}
+
+[node name="Game" type="Node3D" unique_id=1678544200]
+script = ExtResource("1_lnu2h")
+BallPackedScene = ExtResource("2_yqjtg")
+
+[node name="buckets" parent="." unique_id=1376400137 instance=ExtResource("1_uwrxv")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1198295235]
+transform = Transform3D(1, 0, 0, 0, 0.83484787, 0.5504807, 0, -0.5504807, 0.83484787, 0, 4.5568633, 5.778992)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=623930597]
+transform = Transform3D(1, 0, 0, 0, 0.6913681, 0.7225027, 0, -0.7225027, 0.6913681, 0, 5.737716, 5.0960684)
+
+[node name="BallSpawnMarker3D" type="Marker3D" parent="." unique_id=568120526]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.232192, 2.6729007)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=843578463]
+libraries/ = SubResource("AnimationLibrary_lbhrr")
+autoplay = &"spin_the_buckets"
+
+[node name="UserInterface" type="Control" parent="." unique_id=207231036]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface" unique_id=53878703]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer" unique_id=1967164099]
+layout_mode = 2
+
+[node name="BallsRemainingLabel" type="Label" parent="UserInterface/MarginContainer/VBoxContainer" unique_id=746573888]
+layout_mode = 2
+text = "Balls: 25"
+script = ExtResource("4_iywne")
+
+[node name="ScoreLabel" type="Label" parent="UserInterface/MarginContainer/VBoxContainer" unique_id=1648868737]
+layout_mode = 2
+text = "Score: 00 / 10"
+script = ExtResource("4_lbhrr")
+
+[node name="ResetGameButton" type="Button" parent="." unique_id=2032715651]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -103.0
+offset_bottom = 54.0
+grow_horizontal = 0
+disabled = true
+text = "Restart
+Game"
+
+[node name="GameOverLetTheDustSettleTimer" type="Timer" parent="." unique_id=537300726]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="on_ball_released" from="." to="UserInterface/MarginContainer/VBoxContainer/BallsRemainingLabel" method="_on_game_on_ball_released"]
+[connection signal="update_score" from="buckets" to="UserInterface/MarginContainer/VBoxContainer/ScoreLabel" method="_on_buckets_update_score"]
+[connection signal="pressed" from="ResetGameButton" to="." method="_on_reset_game_button_pressed"]
+[connection signal="timeout" from="GameOverLetTheDustSettleTimer" to="." method="conclude_game"]
+
+[editable path="buckets"]
+[editable path="buckets/cool_bucket"]

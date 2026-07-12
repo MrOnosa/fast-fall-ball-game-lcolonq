@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://hsl1ltouqg7s"]
+
+[ext_resource type="Script" uid="uid://4y4vorot1iih" path="res://scenes/buckets.gd" id="1_k0alt"]
+[ext_resource type="PackedScene" uid="uid://cs6ampajts6jl" path="res://assets/blender/cool_bucket.blend" id="3_3oahd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nqmf2"]
+height = 3.75
+radius = 0.893
+
+[node name="buckets" type="Node3D" unique_id=1376400137]
+script = ExtResource("1_k0alt")
+
+[node name="cool_bucket" parent="." unique_id=25864531 instance=ExtResource("3_3oahd")]
+
+[node name="CountBallsInBucketsTimer" type="Timer" parent="." unique_id=728206570]
+wait_time = 0.15
+autostart = true
+
+[node name="InsideTheBucketsArea3D" type="Area3D" parent="." unique_id=1311278744]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=409645774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.815, 0.81, -0.843)
+shape = SubResource("CylinderShape3D_nqmf2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=938461923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9495559, 0.81, -0.843)
+shape = SubResource("CylinderShape3D_nqmf2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=1861955731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6212583, 0.81, 2.509986)
+shape = SubResource("CylinderShape3D_nqmf2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=1616475525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009246349, 0.81, -2.8676872)
+shape = SubResource("CylinderShape3D_nqmf2")
+
+[node name="InsideTheBucketsArea2X3D" type="Area3D" parent="." unique_id=666153873]
+unique_name_in_owner = true
+
+[node name="SpecialCollisionShape" type="CollisionShape3D" parent="InsideTheBucketsArea2X3D" unique_id=2124240985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8606892, 0.81, 2.522882)
+shape = SubResource("CylinderShape3D_nqmf2")
+
+[connection signal="timeout" from="CountBallsInBucketsTimer" to="." method="_on_count_balls_in_buckets_timer_timeout"]
+
+[editable path="cool_bucket"]

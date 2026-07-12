@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bet5i5ghee6vk"]
+
+[ext_resource type="PackedScene" uid="uid://c81jroppuk0p2" path="res://assets/blender/ball.blend" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://b5ymyatexaqk1" path="res://scenes/ball.gd" id="1_cxlvu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n8vss"]
+bounce = 0.35
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nqmf2"]
+radius = 0.234
+
+[node name="BallRigidBody3D" type="RigidBody3D" unique_id=1987608167]
+physics_material_override = SubResource("PhysicsMaterial_n8vss")
+script = ExtResource("1_cxlvu")
+
+[node name="ball" parent="." unique_id=754230683 instance=ExtResource("1_7s4qf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=380684728]
+shape = SubResource("SphereShape3D_nqmf2")
+debug_color = Color(0, 0.6, 0.69803923, 0.8666667)
