@@ -5,6 +5,25 @@
 [ext_resource type="PackedScene" uid="uid://bet5i5ghee6vk" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://bhqlw351407ar" path="res://scenes/balls_remaining_label.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://beqh8rqq7ujng" path="res://scenes/score_label.gd" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dbpbsd5jdkns2" path="res://assets/blender/Dotted_line.blend" id="4_p57ef"]
+[ext_resource type="Shader" uid="uid://b82383mlqk1do" path="res://scenes/game.tres" id="5_u5sy4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iywne"]
+sky_top_color = Color(0.209476, 0.36049592, 0.23900744, 1)
+sky_horizon_color = Color(0.51263344, 0.5425453, 0.50334966, 1)
+ground_bottom_color = Color(0.1639795, 0.21099898, 0.121401556, 1)
+ground_horizon_color = Color(0.51263344, 0.5425453, 0.50334966, 1)
+
+[sub_resource type="Sky" id="Sky_p57ef"]
+sky_material = SubResource("ProceduralSkyMaterial_iywne")
+
+[sub_resource type="Environment" id="Environment_u5sy4"]
+background_mode = 2
+sky = SubResource("Sky_p57ef")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p57ef"]
+render_priority = 0
+shader = ExtResource("5_u5sy4")
 
 [sub_resource type="Animation" id="Animation_iywne"]
 length = 0.001
@@ -120,10 +139,13 @@ _data = {
 script = ExtResource("1_lnu2h")
 BallPackedScene = ExtResource("2_yqjtg")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=888205487]
+environment = SubResource("Environment_u5sy4")
+
 [node name="buckets" parent="." unique_id=1376400137 instance=ExtResource("1_uwrxv")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1198295235]
-transform = Transform3D(1, 0, 0, 0, 0.83484787, 0.5504807, 0, -0.5504807, 0.83484787, 0, 4.5568633, 5.778992)
+transform = Transform3D(1, 0, 0, 0, 0.8434524, 0.5372039, 0, -0.5372039, 0.8434524, 0, 3.8032012, 6.4164433)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=623930597]
@@ -131,7 +153,13 @@ transform = Transform3D(1, 0, 0, 0, 0.6913681, 0.7225027, 0, -0.7225027, 0.69136
 
 [node name="BallSpawnMarker3D" type="Marker3D" parent="." unique_id=568120526]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.232192, 2.6729007)
+transform = Transform3D(0.73, 0, 0, 0, 0.895, 0, 0, 0, 0.895, 0, 4.4898825, 2.6729007)
+
+[node name="Dotted_line" parent="BallSpawnMarker3D" unique_id=1576379331 instance=ExtResource("4_p57ef")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.99999994, 0, -0.99999994, 0, -4.3711385e-08, 0, -2.3526225, 0)
+
+[node name="Cube" parent="BallSpawnMarker3D/Dotted_line" index="0" unique_id=371752569]
+material_override = SubResource("ShaderMaterial_p57ef")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=843578463]
 libraries/ = SubResource("AnimationLibrary_lbhrr")
@@ -183,9 +211,11 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="on_ball_released" from="." to="UserInterface/MarginContainer/VBoxContainer/BallsRemainingLabel" method="_on_game_on_ball_released"]
+[connection signal="update_score" from="buckets" to="." method="_on_buckets_update_score"]
 [connection signal="update_score" from="buckets" to="UserInterface/MarginContainer/VBoxContainer/ScoreLabel" method="_on_buckets_update_score"]
 [connection signal="pressed" from="ResetGameButton" to="." method="_on_reset_game_button_pressed"]
 [connection signal="timeout" from="GameOverLetTheDustSettleTimer" to="." method="conclude_game"]
 
 [editable path="buckets"]
 [editable path="buckets/cool_bucket"]
+[editable path="BallSpawnMarker3D/Dotted_line"]

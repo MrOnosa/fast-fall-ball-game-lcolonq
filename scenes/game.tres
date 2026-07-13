@@ -1,0 +1,57 @@
+[gd_resource type="VisualShader" format=3 uid="uid://b82383mlqk1do"]
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_tabos"]
+output_port_for_preview = 0
+default_input_values = [1, 0.25, 2, 0.5, 3, 0.0, 4, 1.0]
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_tabos"]
+output_port_for_preview = 0
+default_input_values = [0, 0.071, 1, 0.0]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_tabos"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8btkf"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_xr8bf"]
+output_port_for_preview = 0
+function = 0
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_scjsh"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_tabos"]
+output_port_for_preview = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8btkf"]
+default_input_values = [0, 0.0, 1, 2.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_tabos"]
+constant = Color(3.465414e-06, 0.8271894, 0.831808, 1)
+
+[resource]
+nodes/vertex/0/position = Vector2(426.66666, 40)
+nodes/fragment/0/position = Vector2(880, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_tabos")
+nodes/fragment/2/position = Vector2(-1040, 546.6667)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_8btkf")
+nodes/fragment/3/position = Vector2(-1066.6666, 146.66667)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatFunc_xr8bf")
+nodes/fragment/4/position = Vector2(-133.33333, 573.3333)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorDecompose_scjsh")
+nodes/fragment/6/position = Vector2(-760, 240)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_tabos")
+nodes/fragment/7/position = Vector2(-386.66666, 466.66666)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_8btkf")
+nodes/fragment/8/position = Vector2(-640, 520)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorConstant_tabos")
+nodes/fragment/9/position = Vector2(-133.33333, 173.33333)
+nodes/fragment/10/node = SubResource("VisualShaderNodeRemap_tabos")
+nodes/fragment/10/position = Vector2(173.33333, 506.66666)
+nodes/fragment/11/node = SubResource("VisualShaderNodeStep_tabos")
+nodes/fragment/11/position = Vector2(506.66666, 466.66666)
+nodes/fragment/connections = PackedInt32Array(3, 0, 6, 0, 6, 1, 7, 0, 2, 0, 8, 0, 8, 0, 7, 1, 9, 0, 0, 0, 7, 0, 4, 0, 10, 0, 11, 1, 11, 0, 0, 1, 4, 0, 10, 0)
