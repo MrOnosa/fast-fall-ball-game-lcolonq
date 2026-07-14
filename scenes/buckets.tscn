@@ -22,7 +22,140 @@ can_sleep = false
 freeze = true
 freeze_mode = 1
 
-[node name="cool_bucket" parent="BucketRigidBody3D" unique_id=1162607479 instance=ExtResource("3_3oahd")]
+[node name="cool_bucket" parent="BucketRigidBody3D" unique_id=568589533 instance=ExtResource("3_3oahd")]
+
+[node name="BonusCollisionShapeBottom3D" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=894778978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8046117, -1.0316163, 2.5425065)
+shape = SubResource("CylinderShape3D_cynf1")
+debug_color = Color(0.9529412, 0.14509805, 0.4117647, 1)
+
+[node name="BonusCollisionShape3D4" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=663383145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8978944, 0.09178376, 2.5425065)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D5" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1680048823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.716926, 0.09178376, 2.5425065)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D6" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=2031144840]
+transform = Transform3D(0.02423593, 0, 0.99970627, 0, 1, 0, -0.99970627, 0, 0.02423593, 1.7853674, 0.09178376, 3.451755)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D7" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1539330787]
+transform = Transform3D(0.02423593, 0, 0.99970627, 0, 1, 0, -0.99970627, 0, 0.02423593, 1.8294531, 0.09178376, 1.6332577)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D8" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=806118840]
+transform = Transform3D(0.9711668, 0, -0.23840109, 0, 1, 0, 0.23840109, 0, 0.9711668, 0.92411864, 0.09178376, 2.325677)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D9" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=594937051]
+transform = Transform3D(0.9711668, 0, -0.23840109, 0, 1, 0, 0.23840109, 0, 0.9711668, 2.690702, 0.09178376, 2.759336)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D10" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=800618802]
+transform = Transform3D(0.2618682, 0, 0.9651036, 0, 1, 0, -0.9651036, 0, 0.2618682, 1.5692371, 0.09178376, 3.4202833)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D11" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=331051361]
+transform = Transform3D(0.2618682, 0, 0.9651036, 0, 1, 0, -0.9651036, 0, 0.2618682, 2.0455835, 0.09178376, 1.6647294)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D12" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=2027548756]
+transform = Transform3D(0.8903612, 0, -0.45525488, 0, 1, 0, 0.45525488, 0, 0.8903612, 0.9976127, 0.09178376, 2.128445)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D13" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=267234837]
+transform = Transform3D(0.8903612, 0, -0.45525488, 0, 1, 0, 0.45525488, 0, 0.8903612, 2.617208, 0.09178376, 2.956568)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D14" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=322919703]
+transform = Transform3D(0.4766999, 0, 0.8790661, 0, 1, 0, -0.8790661, 0, 0.4766999, 1.3738444, 0.09178376, 3.342031)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D15" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=709267436]
+transform = Transform3D(0.4766999, 0, 0.8790661, 0, 1, 0, -0.8790661, 0, 0.4766999, 2.2409763, 0.09178376, 1.7429818)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D16" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=400779601]
+transform = Transform3D(0.75615597, 0, -0.6543915, 0, 1, 0, 0.6543915, 0, 0.75615597, 1.1196744, 0.09178376, 1.947327)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D17" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1206860226]
+transform = Transform3D(0.75615597, 0, -0.6543915, 0, 1, 0, 0.6543915, 0, 0.75615597, 2.4951463, 0.09178376, 3.137686)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D18" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1302899183]
+transform = Transform3D(0.6725254, 0, 0.74007404, 0, 1, 0, -0.74007404, 0, 0.6725254, 1.1957381, 0.09178376, 3.2156155)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D19" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=668132579]
+transform = Transform3D(0.6725254, 0, 0.74007404, 0, 1, 0, -0.74007404, 0, 0.6725254, 2.4190829, 0.09178376, 1.8693974)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D20" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1345675358]
+transform = Transform3D(0.7244711, 0, -0.6893052, 0, 1, 0, 0.6893052, 0, 0.7244711, 1.1484923, 0.09178376, 1.9155724)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D21" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1021500907]
+transform = Transform3D(0.7244711, 0, -0.6893052, 0, 1, 0, 0.6893052, 0, 0.7244711, 2.4663281, 0.09178376, 3.1694405)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D22" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=455764244]
+transform = Transform3D(0.7066609, 0, 0.7075524, 0, 1, 0, -0.7075524, 0, 0.7066609, 1.1646911, 0.09178376, 3.1860366)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D23" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=109298192]
+transform = Transform3D(0.7066609, 0, 0.7075524, 0, 1, 0, -0.7075524, 0, 0.7066609, 2.4501295, 0.09178376, 1.8989763)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D24" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1043005217]
+transform = Transform3D(0.5392512, 0, -0.842145, 0, 1, 0, 0.842145, 0, 0.5392512, 1.3169527, 0.09178376, 1.7765622)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D25" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1970640032]
+transform = Transform3D(0.5392512, 0, -0.842145, 0, 1, 0, 0.842145, 0, 0.5392512, 2.2978678, 0.09178376, 3.3084507)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D26" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1388179142]
+transform = Transform3D(0.8549669, 0, 0.51868254, 0, 1, 0, -0.51868254, 0, 0.8549669, 1.0298045, 0.09178376, 3.0142565)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D27" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=376520998]
+transform = Transform3D(0.8549669, 0, 0.51868254, 0, 1, 0, -0.51868254, 0, 0.8549669, 2.5850163, 0.09178376, 2.0707564)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D28" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=892972762]
+transform = Transform3D(0.3312314, 0, -0.94354963, 0, 1, 0, 0.94354963, 0, 0.3312314, 1.5061501, 0.09178376, 1.6843332)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D29" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=696678085]
+transform = Transform3D(0.3312314, 0, -0.94354963, 0, 1, 0, 0.94354963, 0, 0.3312314, 2.1086705, 0.09178376, 3.4006798)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D30" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1525384751]
+transform = Transform3D(0.95130014, 0, 0.30826628, 0, 1, 0, -0.30826628, 0, 0.95130014, 0.9421879, 0.09178376, 2.8228798)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D31" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1446573098]
+transform = Transform3D(0.95130014, 0, 0.30826628, 0, 1, 0, -0.30826628, 0, 0.95130014, 2.672633, 0.09178376, 2.2621334)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D32" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=2061304238]
+transform = Transform3D(0.09673774, 0, -0.99530995, 0, 1, 0, 0.99530995, 0, 0.09673774, 1.7194258, 0.09178376, 1.6372563)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D33" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1518375043]
+transform = Transform3D(0.09673774, 0, -0.99530995, 0, 1, 0, 0.99530995, 0, 0.09673774, 1.8953948, 0.09178376, 3.4477568)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D34" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=591877620]
+transform = Transform3D(0.99736214, 0, 0.07258701, 0, 1, 0, -0.07258701, 0, 0.99736214, 0.9002938, 0.09178376, 2.6085258)
+shape = SubResource("BoxShape3D_cetag")
+
+[node name="BonusCollisionShape3D35" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1454753567]
+transform = Transform3D(0.99736214, 0, 0.07258701, 0, 1, 0, -0.07258701, 0, 0.99736214, 2.714527, 0.09178376, 2.4764876)
+shape = SubResource("BoxShape3D_cetag")
 
 [node name="BottomLeftCollisionShapeBottom3D" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=70813811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7088614, -1.0709887, 2.5059314)
@@ -188,8 +321,6 @@ shape = SubResource("BoxShape3D_cetag")
 [node name="BottomLeftCollisionShape3D41" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=924180735]
 transform = Transform3D(-0.10823391, 0, -0.9941255, 0, 1, 0, 0.9941255, 0, -0.10823391, -2.9128413, 0, 2.3691475)
 shape = SubResource("BoxShape3D_cetag")
-
-[node name="Node3D" type="Node3D" parent="BucketRigidBody3D" unique_id=2118577965]
 
 [node name="TopRightCollisionShapeBottom3D2" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=1836130833]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.836573, -1.0709887, -0.8966823)
