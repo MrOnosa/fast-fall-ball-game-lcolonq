@@ -12,7 +12,11 @@ size = Vector3(0.2, 2.535, 0.2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nqmf2"]
 height = 3.75
-radius = 0.893
+radius = 1.272
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k0alt"]
+height = 3.75
+radius = 0.937
 
 [node name="buckets" type="Node3D" unique_id=1376400137]
 script = ExtResource("1_k0alt")
@@ -23,6 +27,21 @@ freeze = true
 freeze_mode = 1
 
 [node name="cool_bucket" parent="BucketRigidBody3D" unique_id=568589533 instance=ExtResource("3_3oahd")]
+
+[node name="BottomLeftCylinder_001" parent="BucketRigidBody3D/cool_bucket/BucketMeshes_001" parent_id_path=PackedInt32Array(568589533, 1053654507) index="0" unique_id=1383089531]
+visible = false
+
+[node name="CylinderBonus_001" parent="BucketRigidBody3D/cool_bucket/BucketMeshes_001" parent_id_path=PackedInt32Array(568589533, 1053654507) index="1" unique_id=1760772867]
+visible = false
+
+[node name="TopCenterCylinder_002" parent="BucketRigidBody3D/cool_bucket/BucketMeshes_001" parent_id_path=PackedInt32Array(568589533, 1053654507) index="2" unique_id=392637399]
+visible = false
+
+[node name="TopLeftCylinder_001" parent="BucketRigidBody3D/cool_bucket/BucketMeshes_001" parent_id_path=PackedInt32Array(568589533, 1053654507) index="3" unique_id=1091750116]
+visible = false
+
+[node name="TopRightCylinder_001" parent="BucketRigidBody3D/cool_bucket/BucketMeshes_001" parent_id_path=PackedInt32Array(568589533, 1053654507) index="4" unique_id=1875474121]
+visible = false
 
 [node name="BonusCollisionShapeBottom3D" type="CollisionShape3D" parent="BucketRigidBody3D" unique_id=894778978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8046117, -1.0316163, 2.5425065)
@@ -850,10 +869,12 @@ unique_name_in_owner = true
 
 [node name="SpecialCollisionShape" type="CollisionShape3D" parent="BucketRigidBody3D/SpecialInsideTheBucketsArea3D" unique_id=2124240985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8606892, 0.81, 2.522882)
-shape = SubResource("CylinderShape3D_nqmf2")
+shape = SubResource("CylinderShape3D_k0alt")
 
 [node name="CountBallsInBucketsTimer" type="Timer" parent="." unique_id=728206570]
 wait_time = 0.15
 autostart = true
 
 [connection signal="timeout" from="CountBallsInBucketsTimer" to="." method="_on_count_balls_in_buckets_timer_timeout"]
+
+[editable path="BucketRigidBody3D/cool_bucket"]
