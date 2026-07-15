@@ -8,13 +8,16 @@ extends Node3D
 @onready var game_over_let_the_dust_settle_timer: Timer = $GameOverLetTheDustSettleTimer
 @onready var reset_game_button: Button = $ResetGameButton
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var score_label: Label = %ScoreLabel
+@onready var victory_label: Label = %VictoryLabel
+@onready var defeat_label: Label = %DefeatLabel
 
 signal on_ball_released
 
 var time_left_until_another_ball_can_drop = 0.0
 var ball_triggered := false
 var balls_left := 25
-var score := 0
+var buckets_with_a_ball : Array = [0,0,0,0,0]
 
 var started = false
 
@@ -23,6 +26,9 @@ func _ready() -> void:
 	JavaScriptBridge.eval("window.parent.postMessage({op: \"ready\"});")
 	started = false # If we're in a debug build, just play the game. Otherwise wait for the signal.
 	animation_player.speed_scale = 1 # Difficulty can be used to change this value
+	victory_label.hide()
+	defeat_label.hide()
+	reset_game_button.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -75,14 +81,32 @@ func conclude_game():
 		reset_game_button.disabled = false
 		reset_game_button.show()
 	
-	if score >= 10:
+	if buckets_with_a_ball.all(func(b): return b > 0):
 		JavaScriptBridge.eval("window.parent.postMessage({op: \"done\", win: true});")
+		victory_label.show()
 	else:
 		JavaScriptBridge.eval("window.parent.postMessage({op: \"done\", win: false});")
+		var empty_buckets = _count_empty_buckets()
+		if empty_buckets > 1:
+			defeat_label.text = "Failed - %s Empty Buckets" % empty_buckets
+		else:
+			defeat_label.text = "Failed - 1 Empty Bucket"
+		defeat_label.show()
 
 func _on_reset_game_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
+func _on_buckets_update_score(_buckets_with_a_ball) -> void:
+	buckets_with_a_ball = _buckets_with_a_ball
+	var filled_buckets = _count_filled_buckets()
+	score_label.text = "Score: %s / %s" % [filled_buckets, buckets_with_a_ball.size()]
+	if filled_buckets == buckets_with_a_ball.size():
+		score_label.modulate = Color.html("00ff2e")
+	else:
+		score_label.modulate = Color.WHITE
+	
+func _count_filled_buckets() -> int:
+	return buckets_with_a_ball.reduce(func(count, b): return count + 1 if b > 0 else count, 0)
 
-func _on_buckets_update_score(score_value) -> void:
-	score = score_value
+func _count_empty_buckets() -> int:
+	return buckets_with_a_ball.reduce(func(count, b): return count + 1 if b <= 0 else count, 0)

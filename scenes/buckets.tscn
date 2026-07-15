@@ -817,34 +817,43 @@ shape = SubResource("BoxShape3D_cetag")
 transform = Transform3D(-0.10823391, 0, -0.9941255, 0, 1, 0, 0.9941255, 0, -0.10823391, -1.2084975, 0, -2.9525766)
 shape = SubResource("BoxShape3D_cetag")
 
-[node name="CountBallsInBucketsTimer" type="Timer" parent="." unique_id=728206570]
-wait_time = 0.15
-autostart = true
-
-[node name="InsideTheBucketsArea3D" type="Area3D" parent="." unique_id=1311278744]
+[node name="TopRightInsideTheBucketsArea3D" type="Area3D" parent="BucketRigidBody3D" unique_id=1311278744]
 unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=409645774]
+[node name="TopRightCollisionShape3D" type="CollisionShape3D" parent="BucketRigidBody3D/TopRightInsideTheBucketsArea3D" unique_id=409645774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.815, 0.81, -0.843)
 shape = SubResource("CylinderShape3D_nqmf2")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=938461923]
+[node name="TopLeftInsideTheBucketsArea3D" type="Area3D" parent="BucketRigidBody3D" unique_id=852011537]
+unique_name_in_owner = true
+
+[node name="TopLeftCollisionShape3D" type="CollisionShape3D" parent="BucketRigidBody3D/TopLeftInsideTheBucketsArea3D" unique_id=1682814234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9495559, 0.81, -0.843)
 shape = SubResource("CylinderShape3D_nqmf2")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=1861955731]
+[node name="BottomLeftInsideTheBucketsArea3D" type="Area3D" parent="BucketRigidBody3D" unique_id=295867448]
+unique_name_in_owner = true
+
+[node name="BottomLeftCollisionShape3D" type="CollisionShape3D" parent="BucketRigidBody3D/BottomLeftInsideTheBucketsArea3D" unique_id=234685010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6212583, 0.81, 2.509986)
 shape = SubResource("CylinderShape3D_nqmf2")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="InsideTheBucketsArea3D" unique_id=1616475525]
+[node name="TopCenterInsideTheBucketsArea3D" type="Area3D" parent="BucketRigidBody3D" unique_id=1389764646]
+unique_name_in_owner = true
+
+[node name="TopCenterCollisionShape3D" type="CollisionShape3D" parent="BucketRigidBody3D/TopCenterInsideTheBucketsArea3D" unique_id=116097402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009246349, 0.81, -2.8676872)
 shape = SubResource("CylinderShape3D_nqmf2")
 
-[node name="InsideTheBucketsArea2X3D" type="Area3D" parent="." unique_id=666153873]
+[node name="SpecialInsideTheBucketsArea3D" type="Area3D" parent="BucketRigidBody3D" unique_id=666153873]
 unique_name_in_owner = true
 
-[node name="SpecialCollisionShape" type="CollisionShape3D" parent="InsideTheBucketsArea2X3D" unique_id=2124240985]
+[node name="SpecialCollisionShape" type="CollisionShape3D" parent="BucketRigidBody3D/SpecialInsideTheBucketsArea3D" unique_id=2124240985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8606892, 0.81, 2.522882)
 shape = SubResource("CylinderShape3D_nqmf2")
+
+[node name="CountBallsInBucketsTimer" type="Timer" parent="." unique_id=728206570]
+wait_time = 0.15
+autostart = true
 
 [connection signal="timeout" from="CountBallsInBucketsTimer" to="." method="_on_count_balls_in_buckets_timer_timeout"]

@@ -2,8 +2,11 @@ class_name Buckets
 extends Node3D
 
 @onready var bucket: Node3D = $bucket
-@onready var inside_the_buckets_area_3d: Area3D = %InsideTheBucketsArea3D
-@onready var inside_the_buckets_area_2x_3d: Area3D = %InsideTheBucketsArea2X3D
+@onready var top_right_inside_the_buckets_area_3d: Area3D = %TopRightInsideTheBucketsArea3D
+@onready var top_left_inside_the_buckets_area_3d: Area3D = %TopLeftInsideTheBucketsArea3D
+@onready var bottom_left_inside_the_buckets_area_3d: Area3D = %BottomLeftInsideTheBucketsArea3D
+@onready var top_center_inside_the_buckets_area_3d: Area3D = %TopCenterInsideTheBucketsArea3D
+@onready var special_inside_the_buckets_area_3d: Area3D = %SpecialInsideTheBucketsArea3D
 
 @export var rotation_speed := 1.0
 
@@ -15,18 +18,20 @@ signal update_score
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_count_balls_in_buckets_timer_timeout() -> void:	
-	total_balls_in_buckets = 0
+	var buckets_with_a_ball = [
+		_count_points(top_center_inside_the_buckets_area_3d, 1),
+		_count_points(top_right_inside_the_buckets_area_3d, 1),
+		_count_points(special_inside_the_buckets_area_3d, 1),
+		_count_points(bottom_left_inside_the_buckets_area_3d, 1),
+		_count_points(top_left_inside_the_buckets_area_3d, 1)
+	]
 	
-	total_balls_in_buckets += _count_points(inside_the_buckets_area_3d, 1)
-	total_balls_in_buckets += _count_points(inside_the_buckets_area_2x_3d, 2)
-	
-	update_score.emit(total_balls_in_buckets)
+	update_score.emit(buckets_with_a_ball)
 
 func _count_points(area: Area3D, value: int) -> int:
 	var points = 0
