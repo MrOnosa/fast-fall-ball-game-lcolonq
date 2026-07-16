@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bhqlw351407ar" path="res://scenes/balls_remaining_label.gd" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://dbpbsd5jdkns2" path="res://assets/blender/Dotted_line.blend" id="4_p57ef"]
 [ext_resource type="Shader" uid="uid://b82383mlqk1do" path="res://scenes/game.tres" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c6neprcatt115" path="res://scenes/progress_button.tscn" id="7_u5sy4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iywne"]
 sky_top_color = Color(0.209476, 0.36049592, 0.23900744, 1)
@@ -112,6 +113,7 @@ theme_override_constants/margin_left = 5
 layout_mode = 2
 
 [node name="BallsRemainingLabel" type="Label" parent="UserInterface/MarginContainer/VBoxContainer" unique_id=746573888]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Balls: 25"
 script = ExtResource("4_iywne")
@@ -172,6 +174,17 @@ disabled = true
 text = "Restart
 Game"
 
+[node name="ProgressButton" parent="." unique_id=1601701509 instance=ExtResource("7_u5sy4")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -750.0
+offset_bottom = 0.0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+pivot_offset = Vector2(0, 750)
+pivot_offset_ratio = Vector2(0.01, -0.01)
+
 [node name="GameOverLetTheDustSettleTimer" type="Timer" parent="." unique_id=537300726]
 wait_time = 3.0
 one_shot = true
@@ -179,6 +192,7 @@ one_shot = true
 [connection signal="on_ball_released" from="." to="UserInterface/MarginContainer/VBoxContainer/BallsRemainingLabel" method="_on_game_on_ball_released"]
 [connection signal="update_score" from="buckets" to="." method="_on_buckets_update_score"]
 [connection signal="pressed" from="ResetGameButton" to="." method="_on_reset_game_button_pressed"]
+[connection signal="out_of_time" from="ProgressButton" to="." method="_on_progress_button_out_of_time"]
 [connection signal="timeout" from="GameOverLetTheDustSettleTimer" to="." method="conclude_game"]
 
 [editable path="buckets"]

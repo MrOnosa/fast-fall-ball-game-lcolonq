@@ -8,27 +8,22 @@ extends Node3D
 @onready var top_center_inside_the_buckets_area_3d: Area3D = %TopCenterInsideTheBucketsArea3D
 @onready var special_inside_the_buckets_area_3d: Area3D = %SpecialInsideTheBucketsArea3D
 
-# Meshes
+# Default Meshes
 @onready var bottom_left_cylinder_004: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes/BottomLeftCylinder_004
 @onready var cylinder_bonus: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes/CylinderBonus
 @onready var top_center_cylinder_001: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes/TopCenterCylinder_001
 @onready var top_left_cylinder_003: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes/TopLeftCylinder_003
 @onready var top_right_cylinder_002: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes/TopRightCylinder_002
 
+# Enhanced Meshes
 @onready var bottom_left_cylinder_001: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes_001/BottomLeftCylinder_001
 @onready var cylinder_bonus_001: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes_001/CylinderBonus_001
 @onready var top_center_cylinder_002: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes_001/TopCenterCylinder_002
 @onready var top_left_cylinder_001: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes_001/TopLeftCylinder_001
 @onready var top_right_cylinder_001: MeshInstance3D = $BucketRigidBody3D/cool_bucket/BucketMeshes_001/TopRightCylinder_001
 
-
-@export var rotation_speed := 1.0
-
-@export var total_balls_in_buckets := 0
-
 signal update_score
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	bottom_left_cylinder_004.show()
 	cylinder_bonus.show()
@@ -42,10 +37,11 @@ func _ready() -> void:
 	top_left_cylinder_001.hide()
 	top_right_cylinder_001.hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+## Count how many buckets have any balls in them. 
+## Thanks for playtesting, jane.
 func _on_count_balls_in_buckets_timer_timeout() -> void:	
 	var buckets_with_a_ball = [0,0,0,0,0]
 	if _got_balls(top_center_inside_the_buckets_area_3d):

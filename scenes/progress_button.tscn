@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c6neprcatt115"]
+
+[ext_resource type="Script" uid="uid://84sy5hr5e7j4" path="res://scenes/progress_button.gd" id="1_bhtyi"]
+[ext_resource type="Texture2D" uid="uid://bwhcytu562vmw" path="res://assets/simple_progress_button_under.png" id="2_7yio7"]
+[ext_resource type="Texture2D" uid="uid://l1htko1c3fna" path="res://assets/simple_progress_button_progress.png" id="3_8r7ip"]
+
+[node name="ProgressButton" type="TextureButton" unique_id=1601701509]
+editor_description = "Built in ability to only fire off the pressed event if the button has been pressed for a designated amount of time. This builds forgivability into the button"
+offset_right = 750.0
+offset_bottom = 750.0
+script = ExtResource("1_bhtyi")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=972608018]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -24.0
+offset_top = -36.0
+offset_right = 770.0
+offset_bottom = 758.0
+value = 23.0
+fill_mode = 4
+texture_under = ExtResource("2_7yio7")
+texture_progress = ExtResource("3_8r7ip")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
