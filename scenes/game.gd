@@ -25,7 +25,7 @@ var started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	JavaScriptBridge.eval("window.parent.postMessage({op: \"ready\", verb: \"drop!\"});")
+	JavaScriptBridge.eval("window.parent.postMessage({op: \"ready\"});")
 	started = false # If we're in a debug build, just play the game. Otherwise wait for the signal.
 	animation_player.speed_scale = 1 # Difficulty is used to change this value
 	victory_label.hide()
@@ -38,10 +38,11 @@ func _process(delta: float) -> void:
 	
 	if !started && ((difficulty != null && difficulty > 0.0) || OS.is_debug_build()):
 		if OS.is_debug_build() && (difficulty == null || difficulty <= 0.0):
-			difficulty = 10
+			difficulty = 6
 		# We got the signal that the game has started.
 		started = true
-		change_difficulty(difficulty)		
+		change_difficulty(difficulty)
+		JavaScriptBridge.eval("window.parent.postMessage({op: \"started\", verb: \"drop!\"});")
 		progress_button.is_running = true
 	
 	if started:
